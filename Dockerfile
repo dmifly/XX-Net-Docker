@@ -13,4 +13,4 @@ VOLUME /root/XX-Net-"$_XXNET_VERSION"/data/gae_proxy/
 COPY client.json data/x_tunnel/client.json
 COPY config.json data/gae_proxy/config.json
 EXPOSE 8087 8085 8086 1080
-CMD ["/bin/sh","-c", "./start"]
+CMD ["/bin/sh","-c", "./start -allow_remote"]
