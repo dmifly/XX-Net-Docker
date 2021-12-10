@@ -16,5 +16,9 @@ RUN unzip -q -d /root /root/"$_XXNET_VERSION" \
 	&& rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/ \
 VOLUME /root/XX-Net-"$_XXNET_VERSION"/data/gae_proxy/
 COPY config.json data/gae_proxy/config.json
+
+VOLUME /root/XX-Net-"$_XXNET_VERSION"/SwitchyOmega/
+COPY SwitchyOmega.crx SwitchyOmega/SwitchyOmega.crx
+
 EXPOSE 8087 8085 8086 1080
 CMD ["/bin/sh","-c", "./start -allow_remote"]
