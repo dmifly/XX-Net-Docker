@@ -12,9 +12,3 @@ docker run --restart=always --net=host -d simoncheung/xxnet
 
 Source:
 https://github.com/XX-net/XX-Net
-
-#update to xx-net 4.5.6 at Dec-9-2021
-
-#update to xx-net 4.7.6 at Mar-13-2022
-
-#update to xx-net 4.7.8 at Mar-20-2022
