@@ -6,8 +6,7 @@ USERNAME=simoncheung
 IMAGE=xxnet
 # ensure we're up to date
 git pull
-# bump version
-# docker run --rm -v "$PWD":/app simoncheung/xxnet patch
+grep ENV\ _XXNET Dockerfile | awk -F "=" '{print $2}' > Docker_Version
 version=`cat VERSION`
 echo "version: $version"
 # run build
