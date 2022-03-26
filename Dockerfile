@@ -1,24 +1,20 @@
-FROM python:3.10-alpine
+FROM alpine
 
-ENV _XXNET_VERSION 4.7.9
-ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1 TZ=Asia/Shanghai
+CMD echo ./VERSION 
+
+ENV _XXNET_VERSION=4.7.9
 
 WORKDIR /root/XX-Net-"$_XXNET_VERSION"
-ADD  https://codeload.github.com/XX-net/XX-Net/zip/"$_XXNET_VERSION" /root
-RUN unzip -q -d /root /root/"$_XXNET_VERSION" \
-	&& apk --no-cache add gcc musl-dev libffi-dev openssl-dev openssl python3-dev py3-pip \
-	&& pip install pyopenssl \
-#	&& apk delete gcc musl-dev libffi-dev openssl-dev openssl python3-dev py3-pip \
+RUN wget -O /root/"$_XXNET_VERSION" https://codeload.github.com/XX-net/XX-Net/zip/"$_XXNET_VERSION" \
+	&& unzip -q -d /root /root/"$_XXNET_VERSION" \
 	&& rm /root/"$_XXNET_VERSION" \
+	&& rm -rf /root/XX-Net-"$_XXNET_VERSION"/python* \
+	&& apk --no-cache add py3-openssl \
+	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/cache/apk/* \
-	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-	&& echo "Asia/Shanghai" > /etc/timezone \
-	&& rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/ \
-VOLUME /root/XX-Net-"$_XXNET_VERSION"/data/gae_proxy/
-COPY config.json data/gae_proxy/config.json
-
-VOLUME /root/XX-Net-"$_XXNET_VERSION"/SwitchyOmega/
-COPY SwitchyOmega.crx SwitchyOmega/SwitchyOmega.crx
+	&& rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/
+# VOLUME /root/XX-Net-"$_XXNET_VERSION"/data/gae_proxy/ 
+# COPY config.json data/gae_proxy/config.json
 
 EXPOSE 8087 8085 8086 1080
 CMD ["/bin/sh","-c", "./start -allow_remote"]
