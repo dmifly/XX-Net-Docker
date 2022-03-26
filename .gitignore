@@ -1,1 +1,14 @@
 Backup/
+.idea
+data
+*~
+*.pyc
+*.swp
+*.pot
+*.mo
+*.xpi
+*pybabel_update.sh
+.DS_Store
+desktop.ini
+.pytest_cache
+*.log
