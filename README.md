@@ -1,7 +1,7 @@
 XX-Net Docker Version
 
 # How to Build Your Own Docker
-sh ./release.sh
+docker build .
 
 # How to Run Docker via Docker Hub Public Image
 docker run --restart=always -p 8085:8085 -p 8087:8087 -p 1080:1080 -d simoncheung/xxnet
