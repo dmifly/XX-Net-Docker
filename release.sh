@@ -6,7 +6,7 @@ USERNAME=simoncheung
 IMAGE=xxnet
 # ensure we're up to date
 git pull
-grep ENV\ _XXNET Dockerfile | awk -F "=" '{print $2}' > Docker_Version
+grep ENV\ _XXNET Dockerfile | awk -F "=" '{print $2}' > Version
 version=`cat VERSION`
 echo "version: $version"
 # run build

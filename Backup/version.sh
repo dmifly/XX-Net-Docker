@@ -4,3 +4,7 @@ docker run --rm alpine wget -qO- -t1 -T2 "https://api.github.com/repos/XX-net/XX
 grep ENV\ _XXNET Dockerfile | awk -F "=" '{print $2}' > Docker_Version
 #replace process
 #$content1=`cat Docker_Version`; $content2=`cat GIT_Version`; sed "s/${content1}/${content2}/ Dockerfile"
+version1=`cat ../Docker_Version`
+version2=`cat ../GIT_Version`
+sed -i "" "s/$version1/$version2/" ../Dockerfile
+version2 > ../VERSION
