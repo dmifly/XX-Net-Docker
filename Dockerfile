@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV _XXNET_VERSION=4.7.3
+ENV _XXNET_VERSION=4.7.2
 
 WORKDIR /root/XX-Net-"$_XXNET_VERSION"
 RUN wget -O /root/"$_XXNET_VERSION" https://codeload.github.com/XX-net/XX-Net/zip/"$_XXNET_VERSION" \
