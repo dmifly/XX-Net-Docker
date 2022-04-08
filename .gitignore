@@ -12,3 +12,4 @@ data
 desktop.ini
 .pytest_cache
 *.log
+*.Dockerfile
