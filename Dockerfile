@@ -2,7 +2,7 @@ FROM alpine
 
 ENV _XXNET_VERSION=4.7.10
 
-WORKDIR /root/XX-Net-"$_XXNET_VERSION"
+WORKDIR /root/xxnet
 RUN mkdir -p /root/xxnet \
 	&& wget -c -O /root/xxnet.tar.gz https://codeload.github.com/XX-net/XX-Net/tar.gz/$_XXNET_VERSION \
 	&& tar -xf /root/xxnet.tar.gz -C /root/xxnet --strip-components=1 \
