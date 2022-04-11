@@ -3,10 +3,11 @@ FROM alpine
 ENV _XXNET_VERSION=4.7.10
 
 WORKDIR /root/XX-Net-"$_XXNET_VERSION"
-RUN wget -O /root/"$_XXNET_VERSION" https://codeload.github.com/XX-net/XX-Net/zip/"$_XXNET_VERSION" \
-	&& unzip -q -d /root /root/"$_XXNET_VERSION" \
-	&& rm /root/"$_XXNET_VERSION" \
-	&& rm -rf /root/XX-Net-"$_XXNET_VERSION"/python* \
+RUN mkdir -p /root/xxnet \
+	&& wget -c -O /root/xxnet.tar.gz https://codeload.github.com/XX-net/XX-Net/tar.gz/$_XXNET_VERSION \
+	&& tar -xf /root/xxnet.tar.gz -C /root/xxnet --strip-components=1 \
+	&& rm /root/xxnet.tar.gz \
+	&& rm -rf /root/xxnet/python* \
 	&& apk --no-cache add py3-openssl \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/cache/apk/* \
