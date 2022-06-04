@@ -13,3 +13,4 @@ desktop.ini
 .pytest_cache
 *.log
 *.Dockerfile
+.!*!Dockerfile
