@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV _XXNET_VERSION=4.9.4
+ENV _XXNET_VERSION=4.9.5
 
 WORKDIR /root/xxnet
 RUN mkdir -p /root/xxnet \
